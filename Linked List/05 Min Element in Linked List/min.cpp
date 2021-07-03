@@ -18,7 +18,7 @@ void create(int A[], int n)
     first->next = NULL;
     last = first;
 
-    for (i = 0; i < n; i++)
+    for (i = 1; i < n; i++)
     {
         t = new Node;
         t->data = A[i];
