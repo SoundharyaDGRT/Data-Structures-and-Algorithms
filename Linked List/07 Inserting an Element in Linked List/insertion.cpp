@@ -1,19 +1,17 @@
 /* INSERTING AN ELEMENT IN LINKED LIST */
 
 #include <iostream>
-#include <math.h>
 using namespace std;
-
 struct Node
 {
     int data;
     struct Node *next;
 } *first = NULL;
-
 void create(int A[], int n)
 {
     int i;
     struct Node *t, *last;
+    first = new Node;
     first->data = A[0];
     first->next = NULL;
     last = first;
@@ -27,50 +25,49 @@ void create(int A[], int n)
         last = t;
     }
 }
-
-void insert(struct Node *p, int index, int x)
+void insert(int pos, int x)
 {
-    struct Node *t;
-    int i;
-
-    if (index < 0 || index > count(p))
-        return;
-    t = new Node;
-    t->data = x;
-    if (index == 0)
+    struct Node *t, *p;
+    if (pos == 0)
     {
+        t = new Node;
+        t->data = x;
         t->next = first;
         first = t;
     }
-    else
+    else if (pos > 0)
     {
-        for (i = 0; i < index - 1; i++)
+        p = first;
+        for (int i = 0; i < pos - 1 && p; i++)
         {
             p = p->next;
         }
-        t->next = p->next;
-        p->next = t;
+        if (p)
+        {
+            t = new Node;
+            t->data = x;
+            t->next = p->next;
+            p->next = t;
+        }
     }
 }
-
 void display(struct Node *p)
 {
     while (p != NULL)
     {
-        cout << p->data;
+        cout << p->data << " ";
         p = p->next;
     }
 }
-
 int main()
 {
-    int A[] = {10, 20, 30, 40, 50};
-
-    create(A, 5);
-
-    insert(first, 0, 5);
-
+    int A[] = {2, 3, 4, 5}, pos = 1, x = 999;
+    create(A, 4);
+    insert(pos, x);
     display(first);
-
-    return 0;
 }
+
+/*
+OUTPUT:
+2 999 3 4 5
+*/
