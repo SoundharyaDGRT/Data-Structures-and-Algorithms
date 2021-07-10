@@ -32,10 +32,10 @@ void create2(int B[], int n)
 {
     int i;
     struct Node *t, *last;
-    first = new Node;
-    first->data = B[0];
-    first->next = NULL;
-    last = first;
+    second = new Node;
+    second->data = B[0];
+    second->next = NULL;
+    last = second;
 
     for (i = 1; i < n; i++)
     {
@@ -108,3 +108,8 @@ int main()
 
     return 0;
 }
+
+/*
+OUTPUT:
+1 2 3 4 5 6 7 8 9 10
+*/
