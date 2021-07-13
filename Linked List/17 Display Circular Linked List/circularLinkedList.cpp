@@ -15,14 +15,14 @@ void create(int A[], int n)
     struct Node *t, *last;
     Head = new Node;
     Head->data = A[0];
-    Head->next = NULL;
+    Head->next = Head;
     last = Head;
 
     for (i = 1; i < n; i++)
     {
         t = new Node;
         t->data = A[i];
-        t->next = NULL;
+        t->next = last->next;
         last->next = t;
         last = t;
     }
@@ -41,13 +41,25 @@ int Length(struct Node *p)
     return len;
 }
 
-void display(struct Node *p)
+void display(struct Node *p) // display
 {
     do
     {
         cout << p->data << " ";
         p = p->next;
     } while (p != Head);
+}
+
+void Rdisplay(struct Node *p) //recursive display
+{
+    static int flag;
+    if (p != Head || flag == 0)
+    {
+        flag = 1;
+        cout << p->data;
+        Rdisplay(p->next);
+    }
+    flag = 0;
 }
 
 int main()
