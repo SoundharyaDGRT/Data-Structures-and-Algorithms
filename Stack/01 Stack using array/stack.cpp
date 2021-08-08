@@ -28,6 +28,21 @@ int push(struct Stack *st, int x)
     }
 }
 
+void pop(struct Stack *st)
+{
+    int x = -1;
+    if (st->Top == -1)
+    {
+        cout << "Stack Underflow";
+    }
+    else
+    {
+        x = st->s[st->Top];
+        st->Top--;
+    }
+    return x;
+}
+
 void display(struct Stack *st)
 {
     int i;
@@ -47,6 +62,7 @@ int main()
     push(&st, 90);
     push(&st, 10);
     push(&st, 20);
+    pop(&st);
 
     display(&st);
 }
